@@ -1,4 +1,4 @@
-import express from "express";
+﻿import express from "express";
 import dotenv from "dotenv";
 import fetch from "node-fetch";
 
@@ -66,7 +66,7 @@ app.get("/simulate-complete", (req, res) => {
   res.send("ok");
 });
 
-// Success page → redirect to Discord when completed
+// Success page â†’ redirect to Discord when completed
 app.get("/success", async (req, res) => {
   const { invoice } = req.query;
   let status = invoices.get(String(invoice))?.status || "pending";
@@ -76,9 +76,20 @@ app.get("/success", async (req, res) => {
   }
   if (!DISCORD_URL) return res.status(500).send("DISCORD_URL not set");
   if (status === "completed") return res.redirect(DISCORD_URL);
-  res.send("<p>Pagamento in attesa… aggiorna tra poco.</p>");
+  res.send("<p>Pagamento in attesaâ€¦ aggiorna tra poco.</p>");
 });
+// --- KEEP-ALIVE ENDPOINT ---
+app.get("/health", (req, res) => {
+  res.status(200).send("ok");
+});
+// --- FINE KEEP-ALIVE ---
 
+// --- KEEP-ALIVE ENDPOINT ---
+app.get("/health", (req, res) => {
+  res.status(200).send("ok");
+});
+// --- FINE KEEP-ALIVE ---
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+
