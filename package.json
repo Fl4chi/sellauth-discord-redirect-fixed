@@ -1,0 +1,14 @@
+{
+  "name": "sellauth-discord-redirect",
+  "version": "1.0.1",
+  "description": "Mini-backend to auto-redirect customers to a Discord ticket panel after SellAuth payment.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2"
+  }
+}
